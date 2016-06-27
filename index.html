@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Pani-Popo</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -11,20 +12,28 @@
         <h1>
             Samoan Koans
         </h1>
-        <div class="questions">
-            How do you say hello in Samoan?
+        <div class="questionSection">
+            <div class="questions">
+                How do you say hello in Samoan?
+            </div>
+            <form class="answers">
+                <input type="radio" name="choices" value="choice-1"> Bonjour
+                <br>
+                <input type="radio" name="choices" value="choice-2"> Talofa
+                <br>
+                <input type="radio" name="choices" value="choice-3"> Como Estas?
+                <br>
+            </form>
+            <button type="submit" class="submitButton">Submit Answer
+            </button>
         </div>
-        <form class="answers">
-            <input type="radio" name="choices" value="choice-1"> Bonjour
-            <br>
-            <input type="radio" name="choices" value="choice-2"> Talofa
-            <br>
-            <input type="radio" name="choices" value="choice-3"> Como Estas?
-            <br>
-        </form>
-        <button type="submit">Submit Answer
-        </button>
     </div>
+    <footer>
+        <a href=".">Home</a>
+        <a href=".">Login</a>
+        <a href=".">Login with Google</a>
+        <a href=".">Signup</a>
+    </footer>
 </body>
 
 </html>

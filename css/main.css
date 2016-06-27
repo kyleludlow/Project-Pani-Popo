@@ -1,0 +1,30 @@
+.body{
+    display: flex;
+    justify-content: center;
+}
+.app h1{
+    text-align: center;
+}
+.questionSection{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid orange 2px;
+}
+.answers {
+    margin-top: 1em;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid orange 2px;
+}
