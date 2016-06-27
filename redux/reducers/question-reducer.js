@@ -11,7 +11,7 @@ var initialState = [{
 
 var questionReducer = function(state, action) {
 
-  state = initialState;
+  state = state || initialState;
 
   if (action.type === actions.DISPLAY_QUESTION){
     var question = action.question;
@@ -21,6 +21,16 @@ var questionReducer = function(state, action) {
         correctAnswer: question.correctAnswer,
         answers: question.answers
       }
-    }})
+    }});
+  }
+
+  if (action.type == actions.MAKE_GUESS){
+    var guess = action.guess;
+
+    if (guess === state[state.length - 1].correctAnswer ){
+
+      // send correct answer status to backend
+
+    }
   }
 }

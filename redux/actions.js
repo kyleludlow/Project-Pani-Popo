@@ -3,13 +3,19 @@ var React = require('react');
 
 
 // takes question data from db, seperates and sends to react component
-
 var DISPLAY_QUESTION = 'DISPLAY_QUESTION';
 var displayQuestion = function(question) {
   return {
     type: DISPLAY_QUESTION,
     question: question
   };
+};
+
+// retrieves guess from user to be compared to correct answer
+var MAKE_GUESS = 'MAKE_GUESS';
+var makeGuess = function(guess) {
+  type: MAKE_GUESS,
+  guess: guess
 };
 
 
