@@ -8,9 +8,7 @@ var DISPLAY_QUESTION = 'DISPLAY_QUESTION';
 var displayQuestion = function(question) {
   return {
     type: DISPLAY_QUESTION,
-    questionText: question.question,
-    correctAnswer: question.correctAnswer,
-    Answers: question.answers
+    question: question
   };
 };
 
