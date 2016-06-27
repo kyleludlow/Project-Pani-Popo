@@ -29,4 +29,8 @@ app.get('/users', function(req, res) {
   User.find({}, function(err, users) {
     res.json('i am a user');
   })
-})
+});
+
+app.listen(3000, function() {
+    console.log('Running on port 3000');
+});
