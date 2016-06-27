@@ -1,0 +1,22 @@
+{
+  "name": "project-pani-popo",
+  "version": "1.0.0",
+  "description": "She only has one apple.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyleludlow/Project-Pani-Popo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyleludlow/Project-Pani-Popo/issues"
+  },
+  "homepage": "https://github.com/kyleludlow/Project-Pani-Popo#readme"
+}
