@@ -29,8 +29,10 @@ var questionReducer = function(state, action) {
 
     if (guess === state[state.length - 1].correctAnswer ){
 
-      // send correct answer status to backend
+      return actions.getQuestion();
 
+    } else {
+      return false;
     }
   }
 }
