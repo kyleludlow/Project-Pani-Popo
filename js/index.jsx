@@ -34,7 +34,7 @@ var Answers = React.createClass({
 
 });
 
-var QuestionPage = React.createClass({
+var QuizPage = React.createClass({
     render() {
         return (
             <div className="quizPage">

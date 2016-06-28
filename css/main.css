@@ -10,15 +10,11 @@
 .login button {
     text-align: center;
     margin: 1em auto;
-    /*display: flex;
-    align-items: center;
-    flex-direction: column;*/
 }
 
-.login a {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.login {
+    text-align: center;
+    margin: 1em auto;
 }
 
 .loginFields {
