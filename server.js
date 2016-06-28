@@ -2,6 +2,7 @@ require('./db/connect');
 var express = require('express');
 var bodyParser = require('body-parser');
 var questionRoutes = require('./routes/question');
+var userRoutes = require('./routes/user');
 var app = express();
 
 app.use(bodyParser.urlencoded({
@@ -17,6 +18,7 @@ app.use(function(req, res, next) {
 app.use(express.static('public'));
 
 app.use('/', questionRoutes);
+app.use('/', userRoutes);
 app.use('*', function(req, res) {
   res.status(404).json({
     message: 'Not Found'
