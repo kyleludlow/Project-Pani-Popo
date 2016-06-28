@@ -1,0 +1,5 @@
+Client ID:
+554465847624-ru7ire21gsjr0cr765qsuiu7evfaoli7.apps.googleusercontent.com
+
+Client Secret:
+iGUcEkvTBGVnlV1hakNuHj4L
