@@ -5,13 +5,12 @@ var Router = router.Router;
 var Route = router.Route;
 var QuizPage = require('./quiz-page');
 var LandingPage = require('./landing-page');
-
+var hashHistory = router.hashHistory;
 
 var routes = (
-    <Router>
+    <Router history={hashHistory}>
+        <Route path="/" component={LandingPage}/>
         <Route path="/quiz-page" component={QuizPage}/>
-        <Route path="/landing-page" component={LandingPage}/>
-        
     </Router>
 );
 
