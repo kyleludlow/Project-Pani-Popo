@@ -1,17 +1,18 @@
 /*LANDING PAGE STYLING*/
 .loginImage {
     display: flex;
-    align-items: center;
-    /*justify-content: center space-around;*/
+    /*align-items: center;*/
+    margin: 0 auto;
     border: solid red 3px;
-    height: 20%;
-    width: 20%;
+    height: 7em;
+    width: 7em;
 }
-.loginButton,
-.googleLoginButton {
-    display: flex;
+.login button {
+    text-align: center;
+    margin: 1em auto;
+    /*display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column;*/
 }
 
 .login a {
@@ -20,9 +21,9 @@
     flex-direction: column;
 }
 
-.login > input {
-    flex-direction: row;
-    justify-content: space-around;
+.loginFields {
+    text-align: center;
+    margin: 1em auto;
 }
 
 /*END LANDING PAGE STYLING*/
