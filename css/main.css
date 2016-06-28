@@ -1,7 +1,38 @@
-/*.body{
+/*LANDING PAGE STYLING*/
+.loginImage {
     display: flex;
-    justify-content: center;
-}*/
+    align-items: center;
+    /*justify-content: center space-around;*/
+    border: solid red 3px;
+    height: 20%;
+    width: 20%;
+}
+.loginButton,
+.googleLoginButton {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login > input {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/*END LANDING PAGE STYLING*/
+
+
+
+
+
+/*BEGIN QUIZ PAGE STYLING*/
+
 .app h1{
     text-align: center;
 }
@@ -11,7 +42,8 @@
     flex-direction: column;
     border: solid orange 2px;
 }
-.answers {
+/* TODO: change answers to form */
+.quizPage form {
     margin-top: 1em;
 }
 
@@ -28,3 +60,5 @@ footer {
     justify-content: space-around;
     border: solid orange 2px;
 }
+
+/*END QUIZ PAGE STYLING*/
