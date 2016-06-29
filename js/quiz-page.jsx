@@ -1,10 +1,14 @@
 var React = require('react');
-var ReactDOM = require('ReactDOM');
+var router = require('react-router');
+var Router = router.Router;
+var Route = router.Route;
+var hashHistory = router.hashHistory;
 var Questions = require('./questions.jsx').Questions;
 var Choices = require('./questions.jsx').Choices;
 
+
 var QuizPage = React.createClass({
-    render() {
+    render: function(){
         return (
             <div className="quizPage">
                 <h1>
@@ -22,4 +26,4 @@ var QuizPage = React.createClass({
 
 });
 
-module.exports = QuizPage;
+exports.QuizPage = QuizPage;

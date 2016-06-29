@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pani-Popo</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- BEGIN LANDING PAGE -->
+        <!-- <div class="landingPage">
+            <h1>AFO MAI!</h1>
+            <h1>Welcome to Samoan Koans!</h1>
+            <h1>The smartest way to learn Samoan!</h1>
+            <img src="" alt="SOME SAMOAN IMAGE" class="loginImage">
+            <div class="login">
+                <div class="loginFields">
+                    <input type="text" placeholder="Enter Your Username">
+                    <input type="text" placeholder="Enter Your Password">
+                </div>
+                <button type="submit" class="loginButton">Login
+                </button>
+                <a href="">Don't Have an Account? <br> Click Here to Signup!</a>
+                <button type="submit" class="googleLoginButton">Login with Google</button>
+                <a href="">Don't have a Gmail Account? <br> Click Here to SignUp for GMail!</a>
+            </div>
+        </div>
+        <!- END LANDING PAGE -->
+
+        <!-- <div class="quizPage">
+            <h1>
+                Samoan Koans
+            </h1>
+            <div class="questionSection">
+                <div class="questions">
+                    How do you say hello in Samoan?
+                </div>
+                <form>
+                    <input type="radio" name="choices" value="choice-1"> Bonjour
+                    <br>
+                    <input type="radio" name="choices" value="choice-2"> Talofa
+                    <br>
+                    <input type="radio" name="choices" value="choice-3"> Como Estas?
+                    <br>
+                </form>
+                <button type="submit" class="submitButton">Submit Answer
+                </button>
+            </div>
+        </div>
+    </div> -->
+    </div>
+
+    <footer>
+        <a href=".">Home</a>
+        <a href=".">Login</a>
+        <a href=".">Login with Google</a>
+        <a href=".">Signup</a>
+    </footer>
+</body>
+
+</html>
