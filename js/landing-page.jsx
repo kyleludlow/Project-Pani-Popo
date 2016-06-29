@@ -10,7 +10,7 @@ var connect = require('react-redux').connect;
 
 var LandingPage = React.createClass({
     startQuestions: function (event){
-        event.preventDefault;
+        event.preventDefault();
         this.props.dispatch(actions.DISPLAY_QUESTION);
         hashHistory.push('/quiz-page');
     },

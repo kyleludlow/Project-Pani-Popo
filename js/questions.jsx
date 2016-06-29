@@ -12,15 +12,16 @@ var Question = React.createClass({
 
     render: function() {
         var questionInfo = this.props.questionInfo;
+        // console.log('MEHHHHHRRRRRR', questionInfo);
         return (
                     <div className="questions">
                     <h1>{questionInfo.questionText}</h1>
                         <div className="choices">
                             <form>
-                                <input type="radio" name="choices" value="choice-1"> {questionInfo.answers[0]}</input>
-                                <input type="radio" name="choices" value="choice-2"> {questionInfo.answers[1]}</input>
-                                <input type="radio" name="choices" value="choice-3"> {questionInfo.answers[2]}</input>
-                                <input type="radio" name="choices" value="choice-4"> {questionInfo.answers[3]}</input>
+                                <input type="radio" name="choices" id="r1" value="choice-1"/><label for="r1">{questionInfo.answers[0]}</label>
+                                <input type="radio" name="choices" id="r1" value="choice-2"/><label for="r2">{questionInfo.answers[1]}</label>
+                                <input type="radio" name="choices" id="r1" value="choice-3"/><label for="r3">{questionInfo.answers[2]}</label>
+                                <input type="radio" name="choices" id="r1" value="choice-4"/><label for="r4">{questionInfo.answers[3]}</label>
                             </form>
                             <button type="submit" class="submitButton">Submit Answer
                             </button>
@@ -32,8 +33,10 @@ var Question = React.createClass({
 });
 
 var mapStateToProps = function(state, props) {
+  console.log(state.question);
+var question = state.question[0];
   return {
-    questionInfo: state
+    questionInfo: question
   };
 };
 

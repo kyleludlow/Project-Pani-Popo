@@ -8,7 +8,7 @@ var store = require('../redux/store.js');
 var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
-var Question = require('./questions.jsx').Question;
+var Question = require('./questions.jsx');
 
 var QuizPage = React.createClass({
     render: function(){
