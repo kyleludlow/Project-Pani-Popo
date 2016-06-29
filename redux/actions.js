@@ -37,19 +37,27 @@ var loginUser = function(loginInfo) {
 // will eventually need to send information
 function getQuestion(data){
   return function(dispatch){
-    return fetch('http//localhost:8080/questions')
-    .then(checkStatus)
-    .then(function(res){
-      dispatch(displayQuestion(res));
+    return fetch('http://localhost:3000/questions', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     })
-  };
+      .then(checkStatus)
+      .then(function(res){
+        console.log(res);
+        dispatch(createRoom(res));
+      })
+    };
 };
 
 
 //retrieves user progress results from db and dispatches DISPLAY_RESULTS
 function getResults(user){
   return function(dispatch){
-    return fetch('http//localhost:8080/' + user)
+    return fetch('http//localhost:3000/' + user)
     .then(checkStatus)
     .then(function(res){
       dispatch(displayResults(res));
