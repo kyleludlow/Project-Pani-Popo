@@ -18,6 +18,20 @@ var makeGuess = function(guess) {
   guess: guess
 };
 
+// will give user results for session or account history
+var DISPLAY_RESULTS = 'DISPLAY_RESULTS';
+var getResults = function(results) {
+  type: DISPLAY_RESULTS,
+  results: results
+};
+
+var LOGIN_USER = 'LOGIN_USER';
+var loginUser = function(loginInfo) {
+  type: LOGIN_USER,
+  loginInfo
+};
+
+
 
 // retrieves question data from db and dispatches DISPLAY_QUESTION
 // will eventually need to send information
@@ -30,6 +44,20 @@ function getQuestion(data){
     })
   };
 };
+
+
+//retrieves user progress results from db and dispatches DISPLAY_RESULTS
+function getResults(user){
+  return function(dispatch){
+    return fetch('http//localhost:8080/' + user)
+    .then(checkStatus)
+    .then(function(res){
+      dispatch(displayResults(res));
+    })
+  };
+};
+
+
 
 
 function checkStatus(response) {

@@ -24,15 +24,18 @@ var questionReducer = function(state, action) {
     }});
   }
 
-  if (action.type == actions.MAKE_GUESS){
+  else if (action.type == actions.MAKE_GUESS){
     var guess = action.guess;
 
     if (guess === state[state.length - 1].correctAnswer ){
 
-      return actions.getQuestion();
+      return actions.getQuestion(true);
 
     } else {
-      return false;
+      return actions.getQuestion(false);
     }
   }
+  return state;
 }
+
+exports.questionReducer = questionReducer;
