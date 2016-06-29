@@ -83,3 +83,7 @@ function checkStatus(response) {
     throw error
   }
 }
+
+exports.getQuestion = getQuestion;
+exports.DISPLAY_QUESTION = DISPLAY_QUESTION;
+exports.MAKE_GUESS = MAKE_GUESS;

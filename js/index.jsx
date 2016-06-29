@@ -28,7 +28,8 @@ var SamoanKoans = React.createClass({
                 <a href=".">Signup</a>
             </footer>
         </div>
-    )}
+    );
+  }
 });
 
 var mapStateToProps = function(state, props) {
@@ -43,13 +44,15 @@ var routes = (
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={SamoanKoans}>
-                <IndexRoute component={LandingPage}/>
-                <Route path="/quiz-page" component ={QuizPage}/>
+                <IndexRoute component={LandingPage} />
+                <Route path="/quiz-page" component ={QuizPage} />
             </Route>
         </Router>
     </Provider>
 );
 
 document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(routes, document.getElementById('app'));
+    ReactDOM.render(
+      routes, document.getElementById('app')
+    );
 });

@@ -11,7 +11,7 @@ var connect = require('react-redux').connect;
 var LandingPage = React.createClass({
     startQuestions: function (event){
         event.preventDefault;
-        this.props.dispatch(actions.getQuestion);
+        this.props.dispatch(actions.DISPLAY_QUESTION);
         hashHistory.push('/quiz-page');
     },
     render: function () {
@@ -33,7 +33,7 @@ var LandingPage = React.createClass({
                         <a href="">Dont have a Gmail Account Click Here to SignUp for GMail</a>
                     </div>
             </div>
-        )
+        );
     }
 });
 

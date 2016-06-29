@@ -18,9 +18,9 @@ var Question = React.createClass({
                         <div className="choices">
                             <form>
                                 <input type="radio" name="choices" value="choice-1"> {questionInfo.answers[0]}</input>
-                                <input type="radio" name="choices" value="choice-2"/> {questionInfo.answers[1]}</input>
-                                <input type="radio" name="choices" value="choice-3"/> {questionInfo.answers[2]}</input>
-                                <input type="radio" name="choices" value="choice-4"/> {questionInfo.answers[3]}</input>
+                                <input type="radio" name="choices" value="choice-2"> {questionInfo.answers[1]}</input>
+                                <input type="radio" name="choices" value="choice-3"> {questionInfo.answers[2]}</input>
+                                <input type="radio" name="choices" value="choice-4"> {questionInfo.answers[3]}</input>
                             </form>
                             <button type="submit" class="submitButton">Submit Answer
                             </button>
