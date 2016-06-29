@@ -7,6 +7,11 @@ var QuizPage = require('./quiz-page').QuizPage;
 var LandingPage = require('./landing-page').LandingPage;
 var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
+var actions = require('../redux/actions.js');
+var Provider = require('react-redux').Provider;
+var store = require('../redux/store.js');
+var connect = require('react-redux').connect;
+var Link = require('react-router').Link
 
 var SamoanKoans = React.createClass({
     render: function() {
@@ -26,18 +31,25 @@ var SamoanKoans = React.createClass({
     )}
 });
 
+var mapStateToProps = function(state, props) {
+  return {
+    samoankoans: state
+  };
+};
+
+var Container = connect(mapStateToProps)(SamoanKoans);
 
 var routes = (
-    <Router history={hashHistory}>
-        <Route path="/" component={SamoanKoans}>
-            <IndexRoute component={LandingPage}/>
+    <Provider store={store}>
+        <Router history={hashHistory}>
+            <Route path="/" component={SamoanKoans}>
+                <IndexRoute component={LandingPage}/>
                 <Route path="/quiz-page" component ={QuizPage}/>
-        </Route>
-    </Router>
+            </Route>
+        </Router>
+    </Provider>
 );
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(routes, document.getElementById('app'));
 });
-
-//new branch created

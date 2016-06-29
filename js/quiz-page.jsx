@@ -3,9 +3,12 @@ var router = require('react-router');
 var Router = router.Router;
 var Route = router.Route;
 var hashHistory = router.hashHistory;
-var Questions = require('./questions.jsx').Questions;
-var Choices = require('./questions.jsx').Choices;
+var Link = require('react-router').Link;
+var store = require('../redux/store.js');
+var actions = require('../redux/actions.js');
+var connect = require('react-redux').connect;
 
+//var Question = require('./questions.jsx').Questions;
 
 var QuizPage = React.createClass({
     render: function(){
@@ -15,10 +18,7 @@ var QuizPage = React.createClass({
                     Samoan Koans
                 </h1>
                 <div className="questionSection">
-                    <Questions/>
-                    <div>
-                        <Choices/>
-                    </div>
+                    <Question/>
                 </div>
             </div>
         );
@@ -26,4 +26,12 @@ var QuizPage = React.createClass({
 
 });
 
-exports.QuizPage = QuizPage;
+var mapStateToProps = function(state, props) {
+  return {
+    samoankoans: state
+  };
+};
+
+var Container = connect(mapStateToProps)(QuizPage);
+
+module.exports = Container;
