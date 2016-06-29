@@ -21,3 +21,13 @@ exports.list = function(callback, errback) {
         callback(questions);
     });
 };
+
+exports.findOne = function(callback, errback) {
+  Question.findOne({question: question}, 'question', function(err,user) {
+    if (err) {
+      errback(err);
+      return
+    }
+    callback(question);
+  })
+}

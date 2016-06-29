@@ -12,6 +12,10 @@ var QuestionSchema = new mongoose.Schema({
   correctAnswer: {
     type: String,
     required: true
+  },
+  correct: {
+    type: Boolean,
+    default: false
   }
 });
 
