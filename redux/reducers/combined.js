@@ -1,6 +1,6 @@
 var combineReducers = require('redux').combineReducers;
 
-var question = require(./question).questionReducer;
+var question = require('./question-reducer.js').questionReducer;
 
 
 var reducers = combineReducers({

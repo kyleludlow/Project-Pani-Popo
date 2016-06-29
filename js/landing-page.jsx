@@ -9,6 +9,11 @@ var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
 var LandingPage = React.createClass({
+    startQuestions: function (event){
+        event.preventDefault;
+        this.props.dispatch(actions.getQuestion);
+        hashHistory.push('/quiz-page');
+    },
     render: function () {
         return (
             <div className="landingPage">
@@ -24,7 +29,7 @@ var LandingPage = React.createClass({
                         <button type="submit" className="loginButton">Login
                         </button>
                         <a href="">Don't Have an Account? Click Here to Signup!</a>
-                        <button type="submit" className="googleLoginButton">Login with Google</button>
+                        <button type="submit" className="googleLoginButton" onClick={this.startQuestions}>Login with Google</button>
                         <a href="">Dont have a Gmail Account Click Here to SignUp for GMail</a>
                     </div>
             </div>

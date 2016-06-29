@@ -1,4 +1,4 @@
-var actions = require('./actions');
+var actions = require('../actions');
 var update = require('react-addons-update');
 
 

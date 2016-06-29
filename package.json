@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:jsx && sass --watch sass:build/css",
+     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:jsx && npm run build:css",
      "watch": "npm run watch:html & npm run watch:css & npm run watch:jsx",
      "test": "mocha --compilers js:babel-register test/**/*.js*",
      "start": "nodemon ./index.js",
@@ -19,7 +19,7 @@
      "build:js": "npm run clean:js && webpack",
      "watch:js": "npm run build:js && webpack --watch",
      "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
-     "clean:css": "rm build/css/main.css",
+     "build:css": "cp css/main.css build/css",
      "watch:css": "cp -rf assets build/ && sass sass:build/css --watch",
      "build:jsx": "npm run clean:jsx && webpack",
      "watch:jsx": "npm run build:jsx && webpack --watch",

@@ -9,17 +9,18 @@ var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
 var Question = React.createClass({
+
     render: function() {
+        var questionInfo = this.props.questionInfo;
         return (
                     <div className="questions">
+                    <h1>{questionInfo.questionText}</h1>
                         <div className="choices">
                             <form>
-                                <input type="radio" name="choices" value="choice-1"> Bonjour
-                                <br>
-                                <input type="radio" name="choices" value="choice-2"> Talofa
-                                <br>
-                                <input type="radio" name="choices" value="choice-3"> Como Estas?
-                                <br>
+                                <input type="radio" name="choices" value="choice-1"> {questionInfo.answers[0]}</input>
+                                <input type="radio" name="choices" value="choice-2"/> {questionInfo.answers[1]}</input>
+                                <input type="radio" name="choices" value="choice-3"/> {questionInfo.answers[2]}</input>
+                                <input type="radio" name="choices" value="choice-4"/> {questionInfo.answers[3]}</input>
                             </form>
                             <button type="submit" class="submitButton">Submit Answer
                             </button>
@@ -30,10 +31,9 @@ var Question = React.createClass({
 
 });
 
-
 var mapStateToProps = function(state, props) {
   return {
-    samoankoans: state
+    questionInfo: state
   };
 };
 

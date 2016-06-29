@@ -14,21 +14,27 @@ var displayQuestion = function(question) {
 // retrieves guess from user to be compared to correct answer
 var MAKE_GUESS = 'MAKE_GUESS';
 var makeGuess = function(guess) {
-  type: MAKE_GUESS,
-  guess: guess
+  return{
+        type: MAKE_GUESS,
+        guess: guess
+  };
 };
 
 // will give user results for session or account history
 var DISPLAY_RESULTS = 'DISPLAY_RESULTS';
 var getResults = function(results) {
-  type: DISPLAY_RESULTS,
-  results: results
+    return {
+        type: DISPLAY_RESULTS,
+        results: results
+    };
 };
 
 var LOGIN_USER = 'LOGIN_USER';
 var loginUser = function(loginInfo) {
-  type: LOGIN_USER,
-  loginInfo
+    return {
+        type: LOGIN_USER,
+        loginInfo
+    };
 };
 
 
