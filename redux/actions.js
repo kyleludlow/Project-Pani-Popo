@@ -86,4 +86,5 @@ function checkStatus(response) {
 
 exports.getQuestion = getQuestion;
 exports.DISPLAY_QUESTION = DISPLAY_QUESTION;
+exports.makeGuess = makeGuess;
 exports.MAKE_GUESS = MAKE_GUESS;

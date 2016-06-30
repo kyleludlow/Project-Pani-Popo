@@ -2,6 +2,7 @@ var actions = require('../actions');
 var update = require('react-addons-update');
 
 
+
 // var initialState = [{
 //     questionText: 'i\'m a question',
 //     correctAnswer: 1,
@@ -38,12 +39,15 @@ console.log('I RAN:   ', action);
   else if (action.type == actions.MAKE_GUESS){
     var guess = action.guess;
 
-    if (guess === state[state.length - 1].correctAnswer ){
+    console.log('MAKE GUESS', guess);
 
-      return actions.getQuestion(true);
+    if (guess === state[state.length - 1].correctAnswer ){
+      console.log('made it');
+      actions.getQuestion({answer: 'true'});
 
     } else {
-      return actions.getQuestion(false);
+     actions.getQuestion({answer: 'false'});
+
     }
   }
   console.log(state);

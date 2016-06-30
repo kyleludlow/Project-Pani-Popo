@@ -7,44 +7,39 @@ var Link = require('react-router').Link;
 var store = require('../redux/store.js');
 var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
+import {RadioGroup, Radio} from 'react-radio-group';
 
 var Question = React.createClass({
 
-    userAnswer : null,
+  getInitialState: function() {
+    return {userAnswer: 'apple'};
+  },
 
-    advanceQuestion: function(event) {
-        event.preventDefault();
-        var userAnswer = this.userAnswer;
-        console.log(userAnswer);
-        if (userAnswer === this.props.questionInfo.correctAnswer){
-          console.log('true');
+  handleChange: function(value) {
 
-          this.props.dispatch(actions.getQuestion(true));
-        } else {
-          this.props.dispatch(actions.getQuestion(false));
-        }
+    this.setState({userAnswer: value});
+    console.log(this.state);
+  },
 
-    },
-    onChange: function(event){
-      console.log(event.target.value);
-      this.userAnswer = event.target.value;
-    }
-    ,
+  submitAnswer: function(event) {
+    event.preventDefault();
+    var userAnswer = this.state.userAnswer;
+    this.props.dispatch(actions.makeGuess(userAnswer));
+  },
     render: function() {
         var questionInfo = this.props.questionInfo;
         return (
             <div className="questions">
                 <h1>{questionInfo.questionText}</h1>
                 <div className="choices">
-                    <form onSubmit={this.advanceQuestion} name="choices">
-                        <input type="radio" name="choices" id="r1" ref="answer" onChange={this.onChange} value={questionInfo.answers[0]}/>
-                        <label for="r1">{questionInfo.answers[0]}</label>
-                        <input type="radio" name="choices" id="r2"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[1]}/>
-                        <label for="r2">{questionInfo.answers[1]}</label>
-                        <input type="radio" name="choices" id="r3"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[2]}/>
-                        <label for="r3">{questionInfo.answers[2]}</label>
-                        <input type="radio" name="choices" id="r4"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[3]}/>
-                        <label for="r4">{questionInfo.answers[3]}</label>
+                    <form onSubmit={this.submitAnswer} name="choices">
+                      <RadioGroup name="choices" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+                        <Radio value={questionInfo.answers[0]}/>{questionInfo.answers[0]}
+                        <Radio value={questionInfo.answers[1]}/>{questionInfo.answers[1]}
+                        <Radio value={questionInfo.answers[2]}/>{questionInfo.answers[2]}
+                        <Radio value={questionInfo.answers[3]}/>{questionInfo.answers[3]}
+                      </RadioGroup>
+
                           <button type="submit" name="choices" className="submitButton">Submit Answer</button>
 
                     </form>
@@ -54,6 +49,17 @@ var Question = React.createClass({
     }
 
 });
+
+//
+// <input type="radio" name="choices" id="r1" ref="answer" onChange={this.onChange} value={questionInfo.answers[0]}/>
+// <label for="r1">{questionInfo.answers[0]}</label>
+// <input type="radio" name="choices" id="r2"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[1]}/>
+// <label for="r2">{questionInfo.answers[1]}</label>
+// <input type="radio" name="choices" id="r3"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[2]}/>
+// <label for="r3">{questionInfo.answers[2]}</label>
+// <input type="radio" name="choices" id="r4"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[3]}/>
+// <label for="r4">{questionInfo.answers[3]}</label>
+//
 
 
 var mapStateToProps = function(state, props) {

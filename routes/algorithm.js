@@ -35,6 +35,10 @@ var card = {
 };
 
 
+deck: question_ id: question id,
+                  m:
+
+
 
 var cards = [{question: 0, m: 1}, {question: 1, m: 1}, {question: 2, m: 1}, {question: 3, m: 1}, {question: 4, m: 1}, {question: 5, m: 1} ];
 
