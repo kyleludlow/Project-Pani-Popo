@@ -9,9 +9,14 @@ var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
 var Question = React.createClass({
-
     render: function() {
         var questionInfo = this.props.questionInfo;
+        // var advanceQuestion = actions.;
+        advanceQuestion: function (event){
+            event.preventDefault();
+            this.props.dispatch(actions.DISPLAY_QUESTION);
+            hashHistory.push('/quiz-page');
+        },
         // console.log('MEHHHHHRRRRRR', questionInfo);
         return (
                     <div className="questions">
@@ -23,8 +28,9 @@ var Question = React.createClass({
                                 <input type="radio" name="choices" id="r1" value="choice-3"/><label for="r3">{questionInfo.answers[2]}</label>
                                 <input type="radio" name="choices" id="r1" value="choice-4"/><label for="r4">{questionInfo.answers[3]}</label>
                             </form>
-                            <button type="submit" class="submitButton">Submit Answer
+                            <button type="submit" className="submitButton">Submit Answer
                             </button>
+                            <button type="submit" className="advanceQuestion" onClick={this.advanceQuestion}>Next Question</button>
                         </div>
                     </div>
         );

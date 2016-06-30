@@ -44,11 +44,17 @@
     margin-top: 1em;
 }
 
-button{
-    display: flex;
-    justify-content: center;
+.submitButton, .advanceQuestion{
+    text-align: center;
+    /*display: flex;
+    align-items: center;
+    justify-content: space-around;*/
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+.advanceQuestion {
+    display: none;
 }
 
 footer {
