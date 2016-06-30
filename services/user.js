@@ -32,6 +32,22 @@ exports.findOne = function(userId, callback, errback) {
   });
 };
 
+exports.findOneAndUpdate = function(userId, deck, callback, errback) {
+  var query = {
+    _id: userId
+  };
+  var update = {
+    deck: deck
+  };
+  User.findOneAndUpdate(query, update, function(err, question) {
+    if (err) {
+      errback(err);
+      return;
+    }
+    callback(question);
+  })
+};
+
 exports.delete = function(id, callback, errback) {
   User.findByIdandRemove(id, function(err, user) {
     if (err) {
