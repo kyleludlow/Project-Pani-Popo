@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var questionRoutes = require('./routes/question');
 var userRoutes = require('./routes/user');
+var algorithmRoutes = require('./routes/algorithm');
 var app = express();
 
 app.use(bodyParser.json());
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 
 app.use('/', questionRoutes);
 app.use('/', userRoutes);
+app.use('/', algorithmRoutes);
 app.use('*', function(req, res) {
   res.status(404).json({
     message: 'Not Found'

@@ -22,8 +22,8 @@ exports.list = function(callback, errback) {
     });
 };
 
-exports.findOne = function(callback, errback) {
-  Question.findOne({question: question}, 'question', function(err,user) {
+exports.findOne = function(questionId, callback, errback) {
+  Question.findOne({_id: questionId}, function(err, question) {
     if (err) {
       errback(err);
       return
