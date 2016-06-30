@@ -10,73 +10,44 @@ var connect = require('react-redux').connect;
 
 var Question = React.createClass({
 
-    var Pregunta = function(props) {
-        return (
-            <div>
-                <div>{props.pregunta}</div>
-            </div>
-        );
-    };
+    userAnswer : null,
 
-    var Preguntas = function() {
-        return (
-            <div>
-                <Pregunta pregunta="How do you say hello?"/>
-            </div>
-        );
-    };
-getInitialState : function() {
-    return {
-        preguntas: {},
-        user_answers: [],
-        user_progress: 0
-    }
-},
-nextStep: function(){
-  this.setState({
-      step: (this.state.user_progress + 1)
-  });
-},
-
-setAnswer: function(event){
-  this.state.user_answers[this.state.user_progress] = this.state.user_answers[this.state.user_progress] || [];
-  this.state.user_answers[this.state.user_progress][parseInt(event.target.value)] = event.target.checked;
-},
-
-isAnswerRight: function(index){
-  var result = true;
-
-  Object.keys(this.state.quiz.preguntas[index].answers).map(function(value, answer_index){
-    var answer = this.state.quiz.preguntas[index].answers[value]
-    //TODO: HOW DO I PULL THIS FROM REDUX?
-    // if (!this.state.user_answers[index] || (answer.is_right != (this.state.user_answers[index][value] || false))) {
-    //   result = false;
-    // }
-  }.bind(this));
-  return result;
-},
     advanceQuestion: function(event) {
         event.preventDefault();
-        this.props.dispatch(actions.DISPLAY_QUESTION);
+        var userAnswer = this.userAnswer;
+        console.log(userAnswer);
+        if (userAnswer === this.props.questionInfo.correctAnswer){
+          console.log('true');
+
+          this.props.dispatch(actions.getQuestion(true));
+        } else {
+          this.props.dispatch(actions.getQuestion(false));
+        }
+
     },
+    onChange: function(event){
+      console.log(event.target.value);
+      this.userAnswer = event.target.value;
+    }
+    ,
     render: function() {
         var questionInfo = this.props.questionInfo;
         return (
             <div className="questions">
                 <h1>{questionInfo.questionText}</h1>
                 <div className="choices">
-                    <form>
-                        <input type="radio" name="choices" id="r1" value="choice-1"/>
+                    <form onSubmit={this.advanceQuestion} name="choices">
+                        <input type="radio" name="choices" id="r1" ref="answer" onChange={this.onChange} value={questionInfo.answers[0]}/>
                         <label for="r1">{questionInfo.answers[0]}</label>
-                        <input type="radio" name="choices" id="r1" value="choice-2"/>
+                        <input type="radio" name="choices" id="r2"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[1]}/>
                         <label for="r2">{questionInfo.answers[1]}</label>
-                        <input type="radio" name="choices" id="r1" value="choice-3"/>
+                        <input type="radio" name="choices" id="r3"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[2]}/>
                         <label for="r3">{questionInfo.answers[2]}</label>
-                        <input type="radio" name="choices" id="r1" value="choice-4"/>
+                        <input type="radio" name="choices" id="r4"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[3]}/>
                         <label for="r4">{questionInfo.answers[3]}</label>
+                          <button type="submit" name="choices" className="submitButton">Submit Answer</button>
+
                     </form>
-                    <button type="submit" className="submitButton">Submit Answer</button>
-                    <button type="submit" className="advanceQuestion" onClick={this.advanceQuestion}>Next Question</button>
                 </div>
             </div>
         );
@@ -84,10 +55,11 @@ isAnswerRight: function(index){
 
 });
 
-var mapStateToProps = function(state, props) {
-    console.log(state.question);
 
-    var question = state.question[0];
+var mapStateToProps = function(state, props) {
+    console.log(state);
+
+    var question = state.question[state.question.length - 1];
     return {questionInfo: question};
 };
 

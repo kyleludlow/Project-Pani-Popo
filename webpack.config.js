@@ -9,7 +9,7 @@ var filename = [packageData.name, packageData.version, 'js'];
 module.exports = {
     entry: path.resolve(__dirname, packageData.main),
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, 'build'),
         filename: filename.join('.'),
     },
     devtool: 'source-map',

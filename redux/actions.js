@@ -54,7 +54,7 @@ function getQuestion(data){
       .then(checkStatus)
       .then(function(res){
         console.log(res);
-        dispatch(createRoom(res));
+        dispatch(displayQuestion(res));
       })
     };
 };
