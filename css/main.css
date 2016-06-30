@@ -1,11 +1,50 @@
+/*font-family: 'Arima Madurai', cursive;*/
+/*font-family: 'Quattrocento', serif;*/
+/*      SAMOAN COLORS
+        red: #ce1126;
+        blue: #002b7f;
+        white: #fff;
+*/
+/*GENERAL STYLING*/
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
 /*LANDING PAGE STYLING*/
+.title > h1 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Arima Madurai';
+    text-align: center;
+    background-color: #ce1126;
+    color: #fff;
+    margin-top: 0;
+    z-index: 3;
+    /*position: fixed;*/
+}
+
+.landingPage h1, h2, h3 {
+    font-family: 'Arima Madurai';
+    text-align: center;
+}
+
+.landingPage h1 {
+    /*replace this background image with the img tag in html/react. Samoan Flag should be to the side of the Welcome Message.*/
+    /*background: url('imgs/Flag_of_Samoa.png') no-repeat;*/
+    background-size: cover;
+    /*color: #fff;*/
+    margin: 0 auto;
+}
 .loginImage {
     display: flex;
     /*align-items: center;*/
     margin: 0 auto;
-    border: solid red 3px;
-    height: 7em;
-    width: 7em;
+    border: solid #002b7f 3px;
+    height: 20em;
+    width: 24em;
 }
 .login button {
     text-align: center;
@@ -13,8 +52,17 @@
 }
 
 .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     margin: 1em auto;
+    margin-bottom: 4em;
+}
+
+.login a {
+    font-family: 'Quattrocento';
+    font-size: .8em;
 }
 
 .loginFields {
@@ -22,6 +70,18 @@
     margin: 1em auto;
 }
 
+.googleLoginButton {
+    font-family: 'Quattrocento';
+    font-size: .75em;
+    color: #fff;
+    background: #002b7f ;
+    border: solid #002b7f .25em;
+    border-radius: 1em;
+    height: 4em;
+}
+.googleLoginButton:hover {
+    background: #ce1126;
+}
 /*END LANDING PAGE STYLING*/
 
 
@@ -53,11 +113,20 @@
     margin-bottom: 1em;
 }
 
+/*END QUIZ PAGE STYLING*/
+
 footer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: solid orange 2px;
+    font-family: 'Quattrocento';
+    font-size: .8em;
+    background-color: #ce1126;
 }
 
-/*END QUIZ PAGE STYLING*/
+footer a {
+    color: #fff;
+}
+footer a:hover {
+    color: #002b7f;
+}

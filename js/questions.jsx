@@ -9,52 +9,6 @@ var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
 var Question = React.createClass({
-
-    var Pregunta = function(props) {
-        return (
-            <div>
-                <div>{props.pregunta}</div>
-            </div>
-        );
-    };
-
-    var Preguntas = function() {
-        return (
-            <div>
-                <Pregunta pregunta="How do you say hello?"/>
-            </div>
-        );
-    };
-getInitialState : function() {
-    return {
-        preguntas: {},
-        user_answers: [],
-        user_progress: 0
-    }
-},
-nextStep: function(){
-  this.setState({
-      step: (this.state.user_progress + 1)
-  });
-},
-
-setAnswer: function(event){
-  this.state.user_answers[this.state.user_progress] = this.state.user_answers[this.state.user_progress] || [];
-  this.state.user_answers[this.state.user_progress][parseInt(event.target.value)] = event.target.checked;
-},
-
-isAnswerRight: function(index){
-  var result = true;
-
-  Object.keys(this.state.quiz.preguntas[index].answers).map(function(value, answer_index){
-    var answer = this.state.quiz.preguntas[index].answers[value]
-    //TODO: HOW DO I PULL THIS FROM REDUX?
-    // if (!this.state.user_answers[index] || (answer.is_right != (this.state.user_answers[index][value] || false))) {
-    //   result = false;
-    // }
-  }.bind(this));
-  return result;
-},
     advanceQuestion: function(event) {
         event.preventDefault();
         this.props.dispatch(actions.DISPLAY_QUESTION);

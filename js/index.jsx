@@ -11,7 +11,7 @@ var actions = require('../redux/actions.js');
 var Provider = require('react-redux').Provider;
 var store = require('../redux/store.js');
 var connect = require('react-redux').connect;
-var Link = require('react-router').Link
+var Link = require('react-router').Link;
 
 var SamoanKoans = React.createClass({
     render: function() {
@@ -51,8 +51,8 @@ var routes = (
     </Provider>
 );
 
-document.addEventListener('DOMContentLoaded', function() {
-    ReactDOM.render(
-      routes, document.getElementById('app')
-    );
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     ReactDOM.render(
+//       routes, document.getElementById('app')
+//     );
+// });

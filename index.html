@@ -4,15 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Pani-Popo</title>
+    <link href="/css/normalize.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Quattrocento" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <div id="app">
-
+        <!-- <div class="title">
+            <h1>SAMOAN KOANS</h1>
+            <div class="landingPage">
+                <h1>AFO MAI!</h1>
+                <h2>Welcome to Samoan Koans!</h2>
+                <h3>The smartest way to learn Samoan!</h3>
+                <img src="http://www.abc.net.au/news/image/4618790-3x2-940x627.jpg" alt="SOME SAMOAN IMAGE" class="loginImage">
+                <div class="login">
+                    <div class="loginFields">
+                        <input type="text" placeholder="Enter Your Username" />
+                        <input type="text" placeholder="Enter Your Password" />
+                    </div>
+                    <button type="submit" class="loginButton">Login
+                    </button>
+                    <a href="">Don't Have an Account? Click Here to Signup!</a>
+                    <button type="submit" class="googleLoginButton" onClick={this.startQuestions}>Login with Google</button>
+                    <a href="">Dont have a Gmail Account Click Here to SignUp for GMail</a>
+                </div>
+            </div>
+        </div> -->
+        <div className="questions">
+            <h1>{questionInfo.questionText}</h1>
+            <div className="choices">
+                <form>
+                    <input type="radio" name="choices" id="r1" value="choice-1"/>
+                    <label for="r1">{questionInfo.answers[0]}</label>
+                    <input type="radio" name="choices" id="r1" value="choice-2"/>
+                    <label for="r2">{questionInfo.answers[1]}</label>
+                    <input type="radio" name="choices" id="r1" value="choice-3"/>
+                    <label for="r3">{questionInfo.answers[2]}</label>
+                    <input type="radio" name="choices" id="r1" value="choice-4"/>
+                    <label for="r4">{questionInfo.answers[3]}</label>
+                </form>
+                <button type="submit" className="submitButton">Submit Answer</button>
+                <button type="submit" className="advanceQuestion" onClick={this.advanceQuestion}>Next Question</button>
+            </div>
+        </div>
     </div>
-<!-- TODO: bring footer into app container like eatup -->
-    
+    <footer>
+        <a href=".">Home</a>
+        <a href=".">Login</a>
+        <a href=".">Login with Google</a>
+        <a href=".">Signup</a>
+    </footer>
+    <!-- TODO: bring footer into app container like eatup -->
+
 </body>
 <script src="project-pani-popo.1.0.0.js"></script>
+
 </html>
