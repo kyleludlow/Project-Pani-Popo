@@ -53,10 +53,6 @@
     margin-bottom: 1em;
 }
 
-.advanceQuestion {
-    display: none;
-}
-
 footer {
     display: flex;
     flex-direction: row;
