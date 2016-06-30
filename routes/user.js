@@ -13,8 +13,6 @@ router.get('/users', function(req, res) {
   });
 });
 
-//create users at registration endpoint
-
 router.post('/users', function(req, res) {
   //get list of all questions
   Question.list(function(questions){
