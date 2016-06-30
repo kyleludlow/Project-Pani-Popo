@@ -32,7 +32,7 @@ exports.findOne = function(userId, callback, errback) {
   });
 };
 
-exports.findOneAndUpdate = function(userId, deck, callback, errback) {
+exports.updateUserDeck = function(userId, deck, callback, errback) {
   var query = {
     _id: userId
   };
