@@ -1,9 +1,9 @@
 var User = require('../model/user');
 
-exports.save = function(name, callback, errback) {
-  User.create({
-    name: name
-  }, function(err, user) {
+exports.save = function(user, callback, errback) {
+  var newUser = new User(user);
+  User.create(
+    newUser, function(err, user) {
     if (err) {
       errback(err);
       return;
