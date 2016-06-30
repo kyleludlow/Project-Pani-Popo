@@ -49,7 +49,10 @@ exports.findOneAndUpdate = function(userId, deck, callback, errback) {
 };
 
 exports.delete = function(id, callback, errback) {
-  User.findByIdandRemove(id, function(err, user) {
+  var query = {
+    _id: id
+  };
+  User.findByIdandRemove(query, function(err, user) {
     if (err) {
       errback(err);
       return;
