@@ -61,10 +61,17 @@ router.post('/learningtime/:userId/:correct', function(req, res) {
 
     deck = moveQuestion(deck, getNewMValue(correct, mValue));
     User.updateUserDeck(user._id, deck, function(user) {
-      res.json(user);
+      var questionId = user.deck[0].questionId;
+      Question.findOne(questionId, function(question) {
+        console.log(question);
+        res.json(question);
+      }, function(err) {
+        res.status(400).json(err);
+      });
     }, function(err) {
       res.status(400).json(err);
     });
+
   }, function(err) {
     res.status(400).json(err);
   });
