@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
+  googleId: {type: String, index: true},
+  fullName: String,
   firstName: String,
-  lastName: String,
-  email: String,
-  password: String,
+  accessToken: String,
   deck: [{
     questionId: String,
     m: Number

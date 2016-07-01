@@ -72,7 +72,10 @@
    "react-router": "^2.4.1",
    "redux": ">=3.5.2",
    "redux-thunk": ">=2.1.0",
-   "sendgrid": "^2.0.0"
+   "sendgrid": "^2.0.0",
+   "passport": "^0.3.2",
+   "passport-google-oauth": "^1.0.0",
+   "passport-http-bearer": "^1.0.1"
  },
   "homepage": "https://github.com/kyleludlow/Project-Pani-Popo#readme"
 }
