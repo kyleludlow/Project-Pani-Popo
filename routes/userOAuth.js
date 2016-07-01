@@ -70,6 +70,7 @@ module.exports = function(app, passport) {
             new: true,
             setDefaultsOnInsert: true
         }, function(err, user) {
+          console.log('im the user:     ' , user);
             return done(err, user);
         })
     })
@@ -77,6 +78,7 @@ module.exports = function(app, passport) {
 
   app.get('/userdetails', passport.authenticate('bearer', { session: false }),
     function(req, res) {
+      console.log(req.user);
       res.json(req.user);
     }
   );
