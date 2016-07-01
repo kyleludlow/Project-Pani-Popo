@@ -23,13 +23,13 @@ var questionReducer = function(state, action) {
         questionText: {$set:question.question},
         correctAnswer: {$set: question.correctAnswer},
         answers: {$set: question.answers}
-      
+
     }});
 
     return newState;
   }
 
-  else if (action.type == actions.MAKE_GUESS){
+  else if (action.type === actions.MAKE_GUESS){
     var guess = action.guess;
 
       var newState = update(state, {0:

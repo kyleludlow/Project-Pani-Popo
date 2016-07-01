@@ -12,7 +12,7 @@ import {RadioGroup, Radio} from 'react-radio-group';
 var Question = React.createClass({
 
   getInitialState: function() {
-    return {userAnswer: 'apple'};
+    return {userAnswer: null};
   },
 
   radioChange: function(value) {
@@ -26,7 +26,6 @@ var Question = React.createClass({
     this.props.dispatch(actions.makeGuess(userAnswer));
   },
 
-
     render: function() {
       var questionInfo = this.props.questionInfo;
         return (
@@ -34,7 +33,7 @@ var Question = React.createClass({
                 <h1>{questionInfo.questionText}</h1>
                 <div className="choices">
                     <form onSubmit={this.submitAnswer} name="choices">
-                      <RadioGroup name="choices" selectedValue={this.state.selectedValue} onChange={this.radioChange}>
+                      <RadioGroup name="choices" selectedValue={this.state.userAnswer} onChange={this.radioChange}>
                         <Radio value={questionInfo.answers[0]}/>{questionInfo.answers[0]}
                         <Radio value={questionInfo.answers[1]}/>{questionInfo.answers[1]}
                         <Radio value={questionInfo.answers[2]}/>{questionInfo.answers[2]}
@@ -53,19 +52,17 @@ var Question = React.createClass({
 
 
 function select(state) {
-  console.log('i got fired');
   return state.question[state.question.length - 1].userAnswer;
 };
 
 let currentValue
+let correctUserAnswer
 function handleChange() {
   let previousValue = currentValue
   currentValue = select(store.getState())
-console.log('im previous:  ' +  previousValue );
   if (previousValue !== currentValue && previousValue !== undefined) {
-    console.log('Some deep nested property changed from', previousValue, 'to', currentValue)
-    store.dispatch(actions.getQuestion({answer: 'true'}));
-  }
+      store.dispatch(actions.getQuestion({answer: currentValue}));
+    }
 };
 let unsubscribe = store.subscribe(handleChange);
 
