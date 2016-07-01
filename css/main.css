@@ -12,47 +12,51 @@
 
 
 /*GENERAL STYLING*/
+
 * {
-	margin: 0;
+    margin: 0;
 }
-
 html, body {
-	height: 100%;
+    height: 100%;
+    min-width: 500px;
 }
-
-#app {
-    background: #fff url("http://3.bp.blogspot.com/-KqSAC9OQShs/UcBbEunILgI/AAAAAAAAZwA/7lFigN10__w/s1600/American+Samoa+1.jpg") no-repeat center;
+html {
+    background: url("http://3.bp.blogspot.com/-KqSAC9OQShs/UcBbEunILgI/AAAAAAAAZwA/7lFigN10__w/s1600/American+Samoa+1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
-
+#app {
+    height: 100vh;
+    width: 100vw;
+}
 .container {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     padding: 0;
     color: #fff;
-    background-color: rgba(255,255,255,0.6);
+    /*background-color: rgba(255, 255, 255, 0.6);*/
     /* equal to footer height */
     margin-bottom: -2em;
 }
-
 .container:after {
-  content: "";
-  display: block;
+    content: "";
+    display: block;
 }
-
 .splashContainer {
     background-color: rgba(214, 82, 97, 0.5);
     border: solid 3px rgba(0, 43, 127, 0.5);
     margin: 0 auto;
-    margin-bottom: 3em;
-    width: 70%;
+    margin-bottom: .25em;
+    width: 40%;
+    min-width: 450px;
 }
+
 /*LANDING PAGE STYLING*/
 
 .title> h1 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     font-family: 'Arima Madurai';
     text-align: center;
     background-color: #ce1126;
@@ -61,6 +65,7 @@ html, body {
     z-index: 3;
     background-attachment: scroll;
     font-size: 3em;
+    width: 100vw;
     /*position: fixed;*/
 }
 .landingPage h1, h2, h3 {
@@ -72,7 +77,7 @@ html, body {
     background: url('http://img.freeflagicons.com/thumb/flag_background/samoa/samoa_640.png') no-repeat;
     background-size: cover;
     /*color: #fff;*/
-    margin: 1em auto;
+    margin: 3em auto 0.5em;
     border: solid #002b7f 3px;
     border-radius: 1em;
     width: 5em;
@@ -81,24 +86,22 @@ html, body {
     justify-content: flex-end;
     align-items: center;
 }
-
 .speechBubble {
     display: flex;
     margin: 0 auto;
 }
-
 .greeting h3 {
     margin-bottom: 1em;
 }
-
 .loginImage {
     display: flex;
+    text-align: center;
     margin: 0 auto;
     border: solid #002b7f 3px;
     height: 20em;
     width: 26em;
+    box-sizing: border-box;
 }
-
 .login {
     display: flex;
     flex-direction: column;
@@ -107,7 +110,6 @@ html, body {
     margin: 1em auto;
     margin-bottom: 4em;
 }
-
 .login button {
     text-align: center;
     margin: 1em auto;
@@ -143,12 +145,12 @@ html, body {
 /*BEGIN QUIZ PAGE STYLING*/
 
 .questions {
-    margin: 2 auto;
-    background-color: rgba(255,255,255,0.6);
-    border: 3px solid #002b7f;
-    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.6);
     min-width: 480px;
     max-width: 750px;
+    border: solid 3px rgba(0, 43, 127, 0.5);
+    margin: 4em auto;
+    width: 70%;
 }
 .questions> h1 {
     text-align: center;
@@ -162,12 +164,13 @@ html, body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin:0 auto;
+    margin: 0 auto;
     width: 50%;
     color: black;
     font-family: 'Quattrocento';
 }
 .choices input {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -202,13 +205,15 @@ footer {
     bottom: 0;
     left: 0;
     height: 2em;
-    width: 100%;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     font-family: 'Arima Madurai', cursive;
     font-size: .8em;
     background-color: #ce1126;
+    width: 100vw;
+    position: fixed;
+    margin-bottom: 0;
 }
 footer a {
     color: #fff;
@@ -216,9 +221,10 @@ footer a {
 footer a:hover {
     color: #002b7f;
 }
+
 /*STICKY FOOTER */
 
 footer, .container:after {
-  /* .push must be the same height as footer */
-	height: 2em;
+    /* .push must be the same height as footer */
+    height: 2em;
 }
