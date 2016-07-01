@@ -82,32 +82,4 @@ router.post('/learningtime/:userId/:correct', function(req, res) {
   });
 });
 
-// router.post('/learningtime/:userId', function(req, res) {
-//   console.log('looking for', req.params.userId);
-//   auto({
-//     checkUserExists: function(callback) {
-//       User.findOne(req.params.userId).exec(callback);
-//     },
-//     //if user exists, make sure user has questions
-//     checkQuestionsExist: ['checkUerExists', function(results, callback) {
-//       if (results.checkUserExists === null) {
-//         callback(true);
-//       }
-//       else {
-//         QuestionModel.find().exec(callback)
-//       }
-//     }],
-//     //if user exists and has questions, provide first question in deck
-//     respondWithQuestion: ['checkQuestionsExist', function(results, callback) {
-//       console.log(results);
-//     }]
-//   }, function(err, results) {
-//     console.log('error:', err);
-//     if (err) {
-//       res.status(400).json({error: 'User was not found. Please register.'})
-//     }
-//   })
-//   res.status(200);
-// });
-
 module.exports = router;
