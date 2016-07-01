@@ -6,13 +6,20 @@ var questionArray = require('../db/questions');
 
 router.post('/questions', function(req, res) {
   var card = questionArray[0];
+
+  console.log('direct hit');
   if (req.body.answer === 'true'){
+
+
+
     questionArray.shift();
     questionArray.splice(4, 0, card);
     //remove first item of array
     //splice that question up the list by 4
   }
   else if (req.body.answer === 'false') {
+    console.log('ive been hit!');
+
     questionArray.shift();
     questionArray.splice(2, 0, card)
     //remove first item of array

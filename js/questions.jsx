@@ -15,10 +15,9 @@ var Question = React.createClass({
     return {userAnswer: 'apple'};
   },
 
-  handleChange: function(value) {
+  radioChange: function(value) {
 
     this.setState({userAnswer: value});
-    console.log(this.state);
   },
 
   submitAnswer: function(event) {
@@ -26,14 +25,16 @@ var Question = React.createClass({
     var userAnswer = this.state.userAnswer;
     this.props.dispatch(actions.makeGuess(userAnswer));
   },
+
+
     render: function() {
-        var questionInfo = this.props.questionInfo;
+      var questionInfo = this.props.questionInfo;
         return (
             <div className="questions">
                 <h1>{questionInfo.questionText}</h1>
                 <div className="choices">
                     <form onSubmit={this.submitAnswer} name="choices">
-                      <RadioGroup name="choices" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+                      <RadioGroup name="choices" selectedValue={this.state.selectedValue} onChange={this.radioChange}>
                         <Radio value={questionInfo.answers[0]}/>{questionInfo.answers[0]}
                         <Radio value={questionInfo.answers[1]}/>{questionInfo.answers[1]}
                         <Radio value={questionInfo.answers[2]}/>{questionInfo.answers[2]}
@@ -50,16 +51,26 @@ var Question = React.createClass({
 
 });
 
-//
-// <input type="radio" name="choices" id="r1" ref="answer" onChange={this.onChange} value={questionInfo.answers[0]}/>
-// <label for="r1">{questionInfo.answers[0]}</label>
-// <input type="radio" name="choices" id="r2"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[1]}/>
-// <label for="r2">{questionInfo.answers[1]}</label>
-// <input type="radio" name="choices" id="r3"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[2]}/>
-// <label for="r3">{questionInfo.answers[2]}</label>
-// <input type="radio" name="choices" id="r4"  ref="answer" onChange={this.onChange}  value={questionInfo.answers[3]}/>
-// <label for="r4">{questionInfo.answers[3]}</label>
-//
+
+function select(state) {
+  console.log('i got fired');
+  return state.question[state.question.length - 1].userAnswer;
+};
+
+let currentValue
+function handleChange() {
+  let previousValue = currentValue
+  currentValue = select(store.getState())
+console.log('im previous:  ' +  previousValue );
+  if (previousValue !== currentValue && previousValue !== undefined) {
+    console.log('Some deep nested property changed from', previousValue, 'to', currentValue)
+    store.dispatch(actions.getQuestion({answer: 'true'}));
+  }
+};
+let unsubscribe = store.subscribe(handleChange);
+
+
+
 
 
 var mapStateToProps = function(state, props) {
@@ -70,5 +81,7 @@ var mapStateToProps = function(state, props) {
 };
 
 var Container = connect(mapStateToProps)(Question);
+
+
 
 module.exports = Container;
