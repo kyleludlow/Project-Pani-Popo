@@ -8,7 +8,7 @@ router.post('/questions', function(req, res) {
   var card = questionArray[0];
 
   console.log('direct hit');
-  if (req.body.answer === card.correctAnswer){
+  if (req.body.correct === true){
 
     console.log('its true');
 
@@ -16,7 +16,7 @@ router.post('/questions', function(req, res) {
     questionArray.splice(4, 0, card);
     //remove first item of array
     //splice that question up the list by 4
-  } else if (req.body.answer !== card.correctAnswer && req.body.answer) {
+  } else if (req.body.correct === false) {
     console.log('ive been hit!');
 
     questionArray.shift();
