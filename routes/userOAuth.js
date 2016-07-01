@@ -1,12 +1,13 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var BearerStrategy = require('passport-http-bearer');
 var User = require('../services/user');
+var UserModel = require('../model/user');
 var Question = require('../services/question');
-var passport = require('passport');
 var express = require('express');
 var app = express();
+var passport = require('passport');
 
-module.exports = function(app, passport) {
+module.exports = function(app, pass) {
 
   passport.serializeUser(function(user, done) {
       done(null, user);
@@ -19,7 +20,7 @@ module.exports = function(app, passport) {
   //returns user details
   passport.use(new BearerStrategy(
     function(token, done) {
-      User.findOne({ accessToken: token },
+      UserModel.findOne({ accessToken: token },
         function(err, user) {
           if(err) {
               return done(err)
@@ -38,11 +39,11 @@ module.exports = function(app, passport) {
   passport.use(new GoogleStrategy({
         clientID: '794120931813-trc0ud5d8g4e3a6o8aan7vqc90nkqc6m.apps.googleusercontent.com',
         clientSecret: 'ToKMdK8ZU3y9QeWuO5RZh4T2',
-        callbackURL: 'http://127.0.0.1:8080/learningtime'
+        callbackURL: 'http://127.0.0.1:3000/auth/google/learningtime'
     },
     function(accessToken, refreshToken, profile, done) {
       //checks if user exists and creates one if they don't
-        User.findOneAndUpdate({
+        UserModel.findOneAndUpdate({
             googleID: profile.id
         }, {
             fullName: profile.displayName,
@@ -57,25 +58,37 @@ module.exports = function(app, passport) {
         })
     })
   );
+
+  app.get('/userdetails', passport.authenticate('bearer', { session: false }),
+    function(req, res) {
+      res.json(req.user);
+    }
+  )
   //info you want to retrieve from google
-  app.get('/login', passport.authenticate('google', {
+  app.get('/auth/google', passport.authenticate('google', {
       scope: ['https://www.googleapis.com/auth/plus.login']
     })
   );
 
-  app.get('/learningtime', passport.authenticate('google', {
-    failureRedirect: '/'
-    }),
+  app.get('/auth/google/learningtime',
+    passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-      User.findOne(req.params.userId, function(user) {
-        var questionId = user.deck[0].questionId;
-        Question.findOne(questionId, function(question) {
-          res.json(question);
-        }, function(err) {
-          res.status(400).json(err);
-        });
-      }, function(err) {
-        res.status(400).json(err);
-      });
+      res.redirect('/');
   });
+
+  // app.get('/learningtime', passport.authenticate('google', {
+  //   failureRedirect: '/'
+  //   }),
+  //   function(req, res) {
+  //     User.findOne(req.params.userId, function(user) {
+  //       var questionId = user.deck[0].questionId;
+  //       Question.findOne(questionId, function(question) {
+  //         res.json(question);
+  //       }, function(err) {
+  //         res.status(400).json(err);
+  //       });
+  //     }, function(err) {
+  //       res.status(400).json(err);
+  //     });
+  // });
 }
