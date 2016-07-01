@@ -21,21 +21,19 @@ var LandingPage = React.createClass({
     render: function () {
         return (
             <div className="landingPage">
-                <h1>AFO MAI!</h1>
-                <h1>Welcome to Samoan Koans!</h1>
-                <h1>The smartest way to learn Samoan!</h1>
-                <img src="" alt="SOME SAMOAN IMAGE" className="loginImage"/>
-                    <div className="login">
-                        <div className="loginFields">
-                            <input type="text" placeholder="Enter Your Username" />
-                            <input type="text" placeholder="Enter Your Password" />
-                        </div>
-                        <button type="submit" className="loginButton">Login
-                        </button>
-                        <a href="">Don't Have an Account? Click Here to Signup!</a>
-                        <button type="submit" className="googleLoginButton" onClick={this.startQuestions}>Login with Google</button>
-                        <a href="">Dont have a Gmail Account Click Here to SignUp for GMail</a>
+                <div className="greeting">
+                    <div className="speechBubble">
+                        <h1>AFO MAI!</h1>
                     </div>
+                </div>
+                <div className="splashContainer">
+                    <h2>Welcome! Learn Samoan For Free! </h2>
+                    <h3>You have already learned your first word!</h3>
+                    <div className="login">
+                        <button type="submit" className="googleLoginButton" onClick={this.startQuestions}>LOGIN WITH GOOGLE</button>
+                        <a href="https://accounts.google.com/SignUp?hl=en">Don't have a Gmail Account? Click Here to SignUp for GMail!</a>
+                    </div>
+                </div>
             </div>
         );
     }

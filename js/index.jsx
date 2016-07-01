@@ -17,7 +17,6 @@ var SamoanKoans = React.createClass({
     render: function() {
         return(
         <div>
-            <h1>SAMOAN KOANS</h1>
             <div>
                 {this.props.children}
             </div>

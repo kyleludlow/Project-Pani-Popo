@@ -14,9 +14,6 @@ var QuizPage = React.createClass({
     render: function(){
         return (
             <div className="quizPage">
-                <h1>
-                    Samoan Koans
-                </h1>
                 <div className="questionSection">
                     <Question/>
                 </div>

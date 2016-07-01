@@ -39,10 +39,11 @@ var Question = React.createClass({
                         <Radio value={questionInfo.answers[2]}/>{questionInfo.answers[2]}
                         <Radio value={questionInfo.answers[3]}/>{questionInfo.answers[3]}
                       </RadioGroup>
-
-                          <button type="submit" name="choices" className="submitButton">Submit Answer</button>
-
-                    </form>
+                    <div className="formButtons">
+                        <button type="submit" className="submitButton">Submit Answer</button>
+                        <button type="submit" className="advanceQuestion" onClick={this.advanceQuestion}>Next Question</button>
+                    </div>
+                </form>
                 </div>
             </div>
         );
