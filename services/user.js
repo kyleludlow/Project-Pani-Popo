@@ -37,15 +37,17 @@ exports.updateUserDeck = function(userId, deck, callback, errback) {
     _id: userId
   };
   var update = {
-    deck: deck
+    $set:{deck: deck}
   };
-  User.findOneAndUpdate(query, update, function(err, question) {
+  User.findOneAndUpdate(query, update, {new: true}, function(err, user) {
     if (err) {
+      console.log('err',err);
       errback(err);
       return;
     }
-    callback(question);
-  })
+    console.log('user (newly persisted)', user);
+    callback(user);
+  });
 };
 
 exports.delete = function(id, callback, errback) {

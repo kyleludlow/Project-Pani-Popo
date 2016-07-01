@@ -30,45 +30,53 @@ router.get('/learningtime/:userId', function(req, res) {
 // POST /{userId}/{true or false}
 // updates the persisted question order as necessary
 
-router.post('/learningtime/:userId/:trueorfalse', function(req, res) {
+var getNewMValue = function(correct, mValue) {
+  if (correct === true) {
+    console.log('question correct. newM: ', mValue * 2);
+    return mValue * 2;
+  }
+  else {
+    console.log('question incorrect. newM: ', 1);
+    return 1;
+  }
+};
+
+var moveQuestion = function(deck, newMValue) {
+  console.log('original deck', deck);
+
+  var card = deck.shift();
+  console.log('shifted card', card);
+  console.log('shifted deck', deck);
+
+  card.m = newMValue;
+  console.log('updated card',card);
+
+  var newCardIndex = 0;
+  while(newCardIndex < deck.length && newMValue > deck[newCardIndex].m) {
+    newCardIndex = newCardIndex + 1;
+  }
+  console.log('newCardIndex',newCardIndex);
+
+  deck.splice(newCardIndex, 0, card);
+  console.log('new deck', deck);
+
+  return deck;
+};
+
+router.post('/learningtime/:userId/:correct', function(req, res) {
   User.findOne(req.params.userId, function(user) {
-    //find the first question for that user
+    var correct = req.params.correct.toString().toLowerCase() === 'true';
+
     var deck = user.deck;
     var mValue = deck[0].m;
-    console.log('mValue before:', mValue);
-    var card = deck[0]
-    console.log('card', card);
-    var correctUserAnswer = function() {
-      return true;
-    };
 
-    var wrongUserAnswer = function() {
-      return false
-    };
-
-    var getNewMValue = function(correct) {
-      if (correct === true) {
-        return mValue * 2;
-      }
-      else if (correct === false) {
-        return 1;
-      }
-    };
-
-    console.log('mValue after:', mValue);
-
-    var moveQuestion = function(deck, card, getNewMValue) {
-      var n = getNewMValue;
-      console.log('n', n);
-      console.log('deckkkk', deck);
-      deck.splice(n, 0, card);
-      var newDeck = deck;
-      console.log('newDeck', newDeck);
-      return newDeck;
-    }
-
-    deck = moveQuestion(deck, deck[0], getNewMValue(correctUserAnswer()));
-    console.log(deck);
+    deck = moveQuestion(deck, getNewMValue(correct, mValue));
+    User.updateUserDeck(user._id, deck, function(user) {
+      //console.log('the user:', user);
+      res.json(user);
+    }, function(err) {
+      res.status(400).json(err);
+    });
   }, function(err) {
     res.status(400).json(err);
   });
