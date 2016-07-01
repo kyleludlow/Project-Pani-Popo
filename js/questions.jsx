@@ -83,7 +83,6 @@ var unsubscribe = store.subscribe(handleChange);
 
 
 var mapStateToProps = function(state, props) {
-    console.log(state);
 
     var question = state.question[state.question.length - 1];
     return {questionInfo: question};

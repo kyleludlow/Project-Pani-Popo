@@ -42,7 +42,6 @@ var loginUser = function(loginInfo) {
 // retrieves question data from db and dispatches DISPLAY_QUESTION
 // will eventually need to send information
 function getQuestion(data){
-  console.log('getQuestion', JSON.stringify(data));
   return function(dispatch){
     return fetch('http://localhost:3000/questions', {
       method: 'POST',
@@ -54,7 +53,6 @@ function getQuestion(data){
     })
       .then(checkStatus)
       .then(function(res){
-        console.log(res);
         dispatch(displayQuestion(res));
       })
     };
