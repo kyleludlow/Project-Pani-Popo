@@ -70,10 +70,10 @@ function handleChange() {
 
   if (previousUserAnswer !== currentUserAnswer && previousUserAnswer !== undefined && currentUserAnswer !== null) {
     if(currentUserAnswer === correctAnswer){
-      store.dispatch(actions.getQuestion({answer: true}));
+      store.dispatch(actions.getQuestion({correct: true}));
       store.dispatch(actions.makeGuess(null));
     } else {
-      store.dispatch(actions.getQuestion({answer: false}));
+      store.dispatch(actions.getQuestion({correct: false}));
       store.dispatch(actions.makeGuess(null));
     }
 
