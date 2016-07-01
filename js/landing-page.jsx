@@ -9,9 +9,13 @@ var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
 var LandingPage = React.createClass({
+
+  componentDidMount: function (){
+    this.props.dispatch(actions.getQuestion());
+  },
     startQuestions: function (event){
         event.preventDefault();
-        this.props.dispatch(actions.DISPLAY_QUESTION);
+        this.props.dispatch(actions.getQuestion());
         hashHistory.push('/quiz-page');
     },
     render: function () {

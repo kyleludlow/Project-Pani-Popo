@@ -42,6 +42,7 @@ var loginUser = function(loginInfo) {
 // retrieves question data from db and dispatches DISPLAY_QUESTION
 // will eventually need to send information
 function getQuestion(data){
+  console.log('getQuestion', JSON.stringify(data));
   return function(dispatch){
     return fetch('http://localhost:3000/questions', {
       method: 'POST',
@@ -54,10 +55,13 @@ function getQuestion(data){
       .then(checkStatus)
       .then(function(res){
         console.log(res);
-        dispatch(createRoom(res));
+        dispatch(displayQuestion(res));
       })
     };
 };
+
+
+// getQuestion({answer: 'true'});
 
 
 //retrieves user progress results from db and dispatches DISPLAY_RESULTS
@@ -76,8 +80,14 @@ function getResults(user){
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300){
+
+    console.log('made it into checkStatus 200');
+
     return response.json();
   } else {
+
+    console.log('made it into checkStatus 400');
+
     var error = new Error(response.statusText);
     error.response = response.json();
     throw error
@@ -86,4 +96,6 @@ function checkStatus(response) {
 
 exports.getQuestion = getQuestion;
 exports.DISPLAY_QUESTION = DISPLAY_QUESTION;
+exports.displayQuestion = displayQuestion;
+exports.makeGuess = makeGuess;
 exports.MAKE_GUESS = MAKE_GUESS;

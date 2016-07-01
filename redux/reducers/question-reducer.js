@@ -2,39 +2,44 @@ var actions = require('../actions');
 var update = require('react-addons-update');
 
 
-var initialState = [{
-    questionText: 'i\'m a question',
-    correctAnswer: 1,
-    answers: ['question', 'question', 'question', 'question']
-}];
 
+var initialState = [{
+    questionText: null,
+    correctAnswer: null,
+    answers: null,
+    userAnswer: null
+}];
 
 var questionReducer = function(state, action) {
 
   state = state || initialState;
 
   if (action.type === actions.DISPLAY_QUESTION){
+
+
     var question = action.question;
-    // var newState = update(state, {0: {
-    //   $set: {
-    //     questionText: question.questionText,
-    //     correctAnswer: question.correctAnswer,
-    //     answers: question.answers
-    //   }
-    // }});
+    var newState = update(state, {0: {
+
+        questionText: {$set:question.question},
+        correctAnswer: {$set: question.correctAnswer},
+        answers: {$set: question.answers}
+
+    }});
+
+    return newState;
   }
 
-  else if (action.type == actions.MAKE_GUESS){
+  else if (action.type === actions.MAKE_GUESS){
     var guess = action.guess;
 
-    if (guess === state[state.length - 1].correctAnswer ){
+      var newState = update(state, {0:
+        {userAnswer: {$set: guess}
+        }
+      });
 
-      return actions.getQuestion(true);
-
-    } else {
-      return actions.getQuestion(false);
+      return newState;
     }
-  }
+
   return state;
 }
 
