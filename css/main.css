@@ -1,19 +1,55 @@
 /*font-family: 'Arima Madurai', cursive;*/
+
+
 /*font-family: 'Quattrocento', serif;*/
+
+
 /*      SAMOAN COLORS
         red: #ce1126;
         blue: #002b7f;
         white: #fff;
 */
+
+
 /*GENERAL STYLING*/
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+* {
+	margin: 0;
 }
 
+html, body {
+	height: 100%;
+}
+
+#app {
+    background: #fff url("http://3.bp.blogspot.com/-KqSAC9OQShs/UcBbEunILgI/AAAAAAAAZwA/7lFigN10__w/s1600/American+Samoa+1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    color: #fff;
+    background-color: rgba(255,255,255,0.6);
+    /* equal to footer height */
+    margin-bottom: -2em;
+}
+
+.container:after {
+  content: "";
+  display: block;
+}
+
+.splashContainer {
+    background-color: rgba(214, 82, 97, 0.5);
+    border: solid 3px rgba(0, 43, 127, 0.5);
+    margin: 0 auto;
+    margin-bottom: 3em;
+    width: 70%;
+}
 /*LANDING PAGE STYLING*/
-.title > h1 {
+
+.title> h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,32 +59,44 @@ body {
     color: #fff;
     margin-top: 0;
     z-index: 3;
+    background-attachment: scroll;
+    font-size: 3em;
     /*position: fixed;*/
 }
-
 .landingPage h1, h2, h3 {
     font-family: 'Arima Madurai';
     text-align: center;
 }
-
 .landingPage h1 {
-    /*replace this background image with the img tag in html/react. Samoan Flag should be to the side of the Welcome Message.*/
-    /*background: url('imgs/Flag_of_Samoa.png') no-repeat;*/
+    display: flex;
+    background: url('http://img.freeflagicons.com/thumb/flag_background/samoa/samoa_640.png') no-repeat;
     background-size: cover;
     /*color: #fff;*/
+    margin: 1em auto;
+    border: solid #002b7f 3px;
+    border-radius: 1em;
+    width: 5em;
+    height: 5em;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.speechBubble {
+    display: flex;
     margin: 0 auto;
 }
+
+.greeting h3 {
+    margin-bottom: 1em;
+}
+
 .loginImage {
     display: flex;
-    /*align-items: center;*/
     margin: 0 auto;
     border: solid #002b7f 3px;
     height: 20em;
-    width: 24em;
-}
-.login button {
-    text-align: center;
-    margin: 1em auto;
+    width: 26em;
 }
 
 .login {
@@ -60,21 +108,27 @@ body {
     margin-bottom: 4em;
 }
 
+.login button {
+    text-align: center;
+    margin: 1em auto;
+}
 .login a {
     font-family: 'Quattrocento';
     font-size: .8em;
+    color: #fff;
 }
-
+.login a:hover {
+    color: #002b7f;
+}
 .loginFields {
     text-align: center;
     margin: 1em auto;
 }
-
 .googleLoginButton {
     font-family: 'Quattrocento';
     font-size: .75em;
     color: #fff;
-    background: #002b7f ;
+    background: #002b7f;
     border: solid #002b7f .25em;
     border-radius: 1em;
     height: 4em;
@@ -82,51 +136,89 @@ body {
 .googleLoginButton:hover {
     background: #ce1126;
 }
+
 /*END LANDING PAGE STYLING*/
-
-
-
 
 
 /*BEGIN QUIZ PAGE STYLING*/
 
-.app h1{
-    text-align: center;
+.questions {
+    margin: 2 auto;
+    background-color: rgba(255,255,255,0.6);
+    border: 3px solid #002b7f;
+    z-index: -1;
+    min-width: 480px;
+    max-width: 750px;
 }
-.questionSection{
+.questions> h1 {
+    text-align: center;
+    font-family: 'Quattrocento';
+    font-weight: bold;
+    background-color: #ce1126;
+    color: #fff;
+    box-sizing: border-box;
+}
+.choices {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: solid orange 2px;
+    margin:0 auto;
+    width: 50%;
+    color: black;
+    font-family: 'Quattrocento';
 }
-/* TODO: change answers to form */
-.quizPage form {
-    margin-top: 1em;
+.choices input {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.submitButton, .advanceQuestion{
-    text-align: center;
-    /*display: flex;
-    align-items: center;
-    justify-content: space-around;*/
-    margin-top: 1em;
-    margin-bottom: 1em;
+/* TODO: change answers to form */
+
+.questions form {
+    margin-top: 4em;
+}
+.formButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1em auto;
+}
+.submitButton, .advanceQuestion {
+    font-family: 'Quattrocento';
+    font-size: .75em;
+    color: #fff;
+    background: #002b7f;
+    border: solid #002b7f .25em;
+    border-radius: 1em;
+    height: 4em;
+    margin: 4em;
 }
 
 /*END QUIZ PAGE STYLING*/
 
 footer {
     display: flex;
+    bottom: 0;
+    left: 0;
+    height: 2em;
+    width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    font-family: 'Quattrocento';
+    align-items: center;
+    font-family: 'Arima Madurai', cursive;
     font-size: .8em;
     background-color: #ce1126;
 }
-
 footer a {
     color: #fff;
 }
 footer a:hover {
     color: #002b7f;
+}
+/*STICKY FOOTER */
+
+footer, .container:after {
+  /* .push must be the same height as footer */
+	height: 2em;
 }
