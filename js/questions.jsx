@@ -24,6 +24,7 @@ var Question = React.createClass({
     event.preventDefault();
     var userAnswer = this.state.userAnswer;
     this.props.dispatch(actions.makeGuess(userAnswer));
+    this.setState({userAnswer: null});
   },
 
     render: function() {
@@ -47,7 +48,6 @@ var Question = React.createClass({
             </div>
         );
     }
-
 });
 
 
@@ -55,19 +55,31 @@ function select(state) {
   return state.question[state.question.length - 1].userAnswer;
 };
 
-let currentValue
-let correctUserAnswer
+function selectCorrectAnswer(state) {
+  return state.question[state.question.length - 1].correctAnswer;
+};
+
+
+
+var currentUserAnswer;
 function handleChange() {
-  let previousValue = currentValue
-  currentValue = select(store.getState())
-  if (previousValue !== currentValue && previousValue !== undefined) {
-      store.dispatch(actions.getQuestion({answer: currentValue}));
+  var correctAnswer = selectCorrectAnswer(store.getState());
+  var previousUserAnswer = currentUserAnswer;
+  currentUserAnswer = select(store.getState());
+
+
+  if (previousUserAnswer !== currentUserAnswer && previousUserAnswer !== undefined && currentUserAnswer !== null) {
+    if(currentUserAnswer === correctAnswer){
+      store.dispatch(actions.getQuestion({answer: true}));
+      store.dispatch(actions.makeGuess(null));
+    } else {
+      store.dispatch(actions.getQuestion({answer: false}));
+      store.dispatch(actions.makeGuess(null));
+    }
+
     }
 };
-let unsubscribe = store.subscribe(handleChange);
-
-
-
+var unsubscribe = store.subscribe(handleChange);
 
 
 var mapStateToProps = function(state, props) {
