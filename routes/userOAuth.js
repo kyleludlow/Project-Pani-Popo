@@ -75,7 +75,7 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get('/userdetails', passport.authenticate('bearer', { session: false }),
+  app.get('/userdetails', passport.authenticate('bearer', { session: true }),
     function(req, res) {
       res.json(req.user);
     }
@@ -89,10 +89,37 @@ module.exports = function(app, passport) {
   app.get('/auth/google/learningtime',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
+      //find the user in DB
+      User.findOne(req.user._id, function(user) {
+        //if deck is empty, populate it
+        if (!user.deck || user.deck.length == 0) {
+          Question.list(function(questions){
+            //set up array objects that match deck from user schema
+            //{questionId: String, m: Number}
+            var deck = [];
+            for (var i=0; i<questions.length; i++) {
+              deck.push({
+                questionId: questions[i]._id,
+                m: 1});
+            }
+            user.deck = deck;
 
-      console.log('im all up in that /auth/google/learningtime');
-
-      res.redirect('/?' + req.user.accessToken);
+            User.save(user, function(user) {
+              res.status(201).json(user);
+            }, function(err) {
+              res.status(400).json(err);
+            });
+          }, function(err){
+              console.log('oops', err);
+              res.status(400).json(err);
+          });
+        } else {
+          //either way, user is now set up, so redirect to first/next question
+          res.redirect('/userdetails');
+        }
+      }, function(err) {
+        res.status(400).json(err);
+      });
   });
 
   // app.get('/learningtime', passport.authenticate('google', {
