@@ -13,10 +13,6 @@ var app = express();
 module.exports = function(app, passport) {
 
 // console.log(passport);
-
-
-
-
   passport.serializeUser(function(user, done) {
       console.log('serializeUSER');
       done(null, user);
@@ -75,7 +71,7 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get('/userdetails', passport.authenticate('bearer', { session: true }),
+  app.get('/userdetails', passport.authenticate('bearer', { session: false }),
     function(req, res) {
       res.json(req.user);
     }
@@ -105,6 +101,7 @@ module.exports = function(app, passport) {
             user.deck = deck;
 
             User.save(user, function(user) {
+              res.redirect('/userdetails?accessToken=' + req.user.accessToken);
               res.status(201).json(user);
             }, function(err) {
               res.status(400).json(err);
@@ -115,7 +112,7 @@ module.exports = function(app, passport) {
           });
         } else {
           //either way, user is now set up, so redirect to first/next question
-          res.redirect('/userdetails');
+          res.redirect('/userdetails?accessToken=' + req.user.accessToken);
         }
       }, function(err) {
         res.status(400).json(err);
