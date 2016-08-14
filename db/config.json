@@ -1,0 +1,11 @@
+{
+    "production": {
+        "url": "mongodb://localhost/project-pani-popo"
+    },
+    "test": {
+        "url": "mongodb://localhost/project-pani-popo-test"
+    },
+    "development": {
+        "url": "mongodb://localhost/project-pani-popo-dev"
+    }
+}

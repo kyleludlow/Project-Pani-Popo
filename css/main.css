@@ -1,0 +1,63 @@
+/*LANDING PAGE STYLING*/
+.loginImage {
+    display: flex;
+    /*align-items: center;*/
+    margin: 0 auto;
+    border: solid red 3px;
+    height: 7em;
+    width: 7em;
+}
+.login button {
+    text-align: center;
+    margin: 1em auto;
+}
+
+.login {
+    text-align: center;
+    margin: 1em auto;
+}
+
+.loginFields {
+    text-align: center;
+    margin: 1em auto;
+}
+
+/*END LANDING PAGE STYLING*/
+
+
+
+
+
+/*BEGIN QUIZ PAGE STYLING*/
+
+.app h1{
+    text-align: center;
+}
+.questionSection{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid orange 2px;
+}
+/* TODO: change answers to form */
+.quizPage form {
+    margin-top: 1em;
+}
+
+.submitButton, .advanceQuestion{
+    text-align: center;
+    /*display: flex;
+    align-items: center;
+    justify-content: space-around;*/
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: solid orange 2px;
+}
+
+/*END QUIZ PAGE STYLING*/
