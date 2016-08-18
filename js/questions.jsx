@@ -10,22 +10,18 @@ var connect = require('react-redux').connect;
 import {RadioGroup, Radio} from 'react-radio-group';
 
 var Question = React.createClass({
-  getInitialState: function() {
-    return {userAnswer: null};
-  },
-
-  radioChange: function(value) {
-
-    this.setState({userAnswer: value});
-  },
-
-  submitAnswer: function(event) {
-    event.preventDefault();
-    var userAnswer = this.state.userAnswer;
-    this.props.dispatch(actions.makeGuess(userAnswer));
-    this.setState({userAnswer: null});
-  },
-
+    getInitialState: function() {
+      return {userAnswer: null};
+    },
+    radioChange: function(value) {
+      this.setState({userAnswer: value});
+    },
+    submitAnswer: function(event) {
+      event.preventDefault();
+      var userAnswer = this.state.userAnswer;
+      this.props.dispatch(actions.makeGuess(userAnswer));
+      this.setState({userAnswer: null});
+    },
     render: function() {
       var questionInfo = this.props.questionInfo;
         return (
@@ -50,7 +46,6 @@ var Question = React.createClass({
     }
 });
 
-
 function select(state) {
   return state.question[state.question.length - 1].userAnswer;
 };
@@ -58,8 +53,6 @@ function select(state) {
 function selectCorrectAnswer(state) {
   return state.question[state.question.length - 1].correctAnswer;
 };
-
-
 
 var currentUserAnswer;
 function handleChange() {
@@ -81,9 +74,7 @@ function handleChange() {
 };
 var unsubscribe = store.subscribe(handleChange);
 
-
 var mapStateToProps = function(state, props) {
-
     var question = state.question[state.question.length - 1];
     return {questionInfo: question};
 };

@@ -6,12 +6,11 @@ var QuestionModel = require('../model/question');
 var auto = require('run-auto');
 
 // algorithm routes:
-//
 // GET /{userId}
 // returns the next question and answers and correct answer
 
 router.get('/learningtime/:userId', function(req, res) {
-  User.findOne(req.params.userId, function(user) {
+  User.findOneByGoogle(req.params.userId, function(user) {
     var questionId = user.deck[0].questionId;
     Question.findOne(questionId, function(question) {
       console.log(question);

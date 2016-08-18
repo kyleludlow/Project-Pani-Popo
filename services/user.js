@@ -32,6 +32,16 @@ exports.findOne = function(userId, callback, errback) {
   });
 };
 
+exports.findOneByGoogle = function(accessToken, callback, errback) {
+  User.findOne({accessToken: accessToken}, function(err, user) {
+    if (err) {
+      errback(err);
+      return;
+    }
+    callback(user);
+  });
+};
+
 exports.updateUserDeck = function(userId, deck, callback, errback) {
   var query = {
     _id: userId

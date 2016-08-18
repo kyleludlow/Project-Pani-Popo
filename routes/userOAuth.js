@@ -5,18 +5,9 @@ var UserModel = require('../model/user');
 var Question = require('../services/question');
 var express = require('express');
 var app = express();
-// var passport = require('passport');
-
-
-
+var passport = require('passport');
 
 module.exports = function(app, passport) {
-
-// console.log(passport);
-
-
-
-
   passport.serializeUser(function(user, done) {
       console.log('serializeUSER');
       done(null, user);
@@ -24,14 +15,12 @@ module.exports = function(app, passport) {
 
   passport.deserializeUser(function(user, done) {
     console.log('DEserializeUSER');
-
-      done(null, user);
+    done(null, user);
   });
 
   //returns user details
   passport.use(new BearerStrategy(
     function(token, done) {
-
       console.log('BEAR STRATEGY');
       UserModel.findOne({ accessToken: token },
         function(err, user) {
@@ -50,15 +39,13 @@ module.exports = function(app, passport) {
   //Oauth Strategy
 
   passport.use(new GoogleStrategy({
-        clientID: '554465847624-ru7ire21gsjr0cr765qsuiu7evfaoli7.apps.googleusercontent.com',
-        clientSecret: 'iGUcEkvTBGVnlV1hakNuHj4L',
-        callbackURL: 'http://localhost:3000/auth/google/learningtime'
+        clientID: '794120931813-trc0ud5d8g4e3a6o8aan7vqc90nkqc6m.apps.googleusercontent.com',
+        clientSecret: 'ToKMdK8ZU3y9QeWuO5RZh4T2',
+        callbackURL: 'http://127.0.0.1:3000/auth/google/learningtime'
     },
     function(accessToken, refreshToken, profile, done) {
       //checks if user exists and creates one if they don't
-      //
-      //
-        // console.log('im the profile     ', profile);
+        console.log('im the profile     ', profile);
         UserModel.findOneAndUpdate({
             googleID: profile.id
         }, {
@@ -78,7 +65,7 @@ module.exports = function(app, passport) {
 
   app.get('/userdetails', passport.authenticate('bearer', { session: false }),
     function(req, res) {
-      console.log(req.user);
+      console.log('REQUEST USER', req.user);
       res.json(req.user);
     }
   );
@@ -89,12 +76,11 @@ module.exports = function(app, passport) {
   );
 
   app.get('/auth/google/learningtime',
-    passport.authenticate('google', { failureRedirect: '/login' }),
+    passport.authenticate('google', { failureRedirect: '/auth/google' }),
     function(req, res) {
+      console.log('req.user', req.user);
 
-      console.log('im all up in that /auth/google/learningtime');
-
-      res.redirect('/?' + req.user.accessToken);
+      res.redirect('/learningtime/' + req.user.accessToken);
   });
 
   // app.get('/learningtime', passport.authenticate('google', {

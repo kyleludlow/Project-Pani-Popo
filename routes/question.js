@@ -3,7 +3,6 @@ var router = express.Router();
 var Question = require('../services/question');
 var questionArray = require('../db/questions');
 
-
 router.post('/questions', function(req, res) {
   var card = questionArray[0];
 
@@ -16,7 +15,8 @@ router.post('/questions', function(req, res) {
     questionArray.splice(4, 0, card);
     //remove first item of array
     //splice that question up the list by 4
-  } else if (req.body.correct === false) {
+  }
+  else if (req.body.correct === false) {
     console.log('ive been hit!');
 
     questionArray.shift();
