@@ -23,7 +23,7 @@ exports.list = function(callback, errback) {
 };
 
 exports.findOne = function(userId, callback, errback) {
-  User.findOne({_id: userId}, function(err, user) {
+  User.findOne({googleID: userId}, function(err, user) {
     if (err) {
       errback(err);
       return;
@@ -32,8 +32,8 @@ exports.findOne = function(userId, callback, errback) {
   });
 };
 
-exports.findOneByGoogle = function(accessToken, callback, errback) {
-  User.findOne({accessToken: accessToken}, function(err, user) {
+exports.findOneByGoogleId = function(googleId, callback, errback) {
+  User.findOne({googleID: googleId}, function(err, user) {
     if (err) {
       errback(err);
       return;

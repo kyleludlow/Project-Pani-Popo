@@ -30,7 +30,9 @@ var getResults = function(results) {
 
 var LOGIN_USER = 'LOGIN_USER';
 var loginUser = function(token) {
-    console.log('logging in the user');
+    var headers = new Headers({
+      Authorization: 'Bearer ' + token
+    });
     return function(dispatch) {
       return fetch('/userdetails', {headers: headers})
       .then(function(res) {

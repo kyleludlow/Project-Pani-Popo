@@ -10,7 +10,9 @@ var auto = require('run-auto');
 // returns the next question and answers and correct answer
 
 router.get('/learningtime/:userId', function(req, res) {
-  User.findOneByGoogle(req.params.userId, function(user) {
+  console.log('userId in learningtime', req.params.userId);
+  User.findOne(req.params.userId, function(user) {
+    console.log('user in learningtime', user.googleID, user.accessToken);
     var questionId = user.deck[0].questionId;
     Question.findOne(questionId, function(question) {
       console.log(question);

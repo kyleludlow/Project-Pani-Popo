@@ -23,7 +23,7 @@ var LandingPage = React.createClass({
               <div className="splashContainer">
                   <h2>Welcome! Learn Samoan for free! </h2>
                   <div className="login">
-                      <form action="/login" method="get">
+                      <form action="/auth/google">
                           <button type="submit" className="googleLoginButton">LOGIN WITH GOOGLE</button>
                       </form>
                       <a href="https://accounts.google.com/SignUp?hl=en">Don't have a Gmail Account? Click here to sign up for Gmail!</a>
