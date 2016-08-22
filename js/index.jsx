@@ -7,7 +7,6 @@ var QuizPage = require('./quiz-page.jsx');
 var LandingPage = require('./landing-page.jsx');
 var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
-var actions = require('../redux/actions.js');
 var Provider = require('react-redux').Provider;
 var store = require('../redux/store.js');
 var connect = require('react-redux').connect;
