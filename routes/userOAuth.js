@@ -93,6 +93,6 @@ module.exports = function(app, passport) {
   app.get('/auth/google/learningtime',
     passport.authenticate('google', { failureRedirect: '/auth/google' }),
     function(req, res) {
-      res.redirect('/learningtime/' + req.user.googleID);
+      res.redirect('http://localhost:8080/#/quiz-page/');
   });
 };

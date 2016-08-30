@@ -11,9 +11,9 @@ var userActions = require('../redux/actions/user');
 var questionActions = require('../redux/actions/question');
 
 var LandingPage = React.createClass({
-  componentDidMount: function() {
-    this.props.dispatch(questionActions.getQuestion());
-  },
+  // componentDidMount: function() {
+  //   this.props.dispatch(questionActions.getQuestion());
+  // },
   render: function() {
       return (
           <div className="landingPage">
@@ -25,7 +25,7 @@ var LandingPage = React.createClass({
               <div className="splashContainer">
                   <h2>Welcome! Learn Samoan for free! </h2>
                   <div className="login">
-                      <form action="/auth/google">
+                      <form action="http://localhost:3000/auth/google" method="get">
                           <button type="submit" className="googleLoginButton">LOGIN WITH GOOGLE</button>
                       </form>
                       <a href="https://accounts.google.com/SignUp?hl=en">Don't have a Gmail Account? Click here to sign up for Gmail!</a>

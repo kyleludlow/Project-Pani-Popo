@@ -3,7 +3,7 @@ var React = require('react');
 
 //action for first question
 var GET_QUESTION = 'GET_QUESTION';
-var getQuestion = function(googleID) {
+var getQuestion = function(token, googleID) {
   var headers = new Headers({
     Authorization: 'Bearer ' + token,
     'Accept': 'application/json',

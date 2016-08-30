@@ -17,12 +17,11 @@ var QuizPage = React.createClass({
         return (
             <div className="quizPage">
                 <div className="questionSection">
-                    <Question/>
+                    <h3>I am an asshole</h3>
                 </div>
             </div>
         );
     }
-
 });
 
 var mapStateToProps = function(state, props) {
