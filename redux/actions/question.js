@@ -40,7 +40,7 @@ var answerQuestion = function(googleID, answer) {
     'Content-Type': 'application/json'
   });
   return function(dispatch) {
-    return fetch('/learningtime/' + googleID + '/' answer, {
+    return fetch('/learningtime/' + googleID + '/' + answer, {
       method: 'POST',
       headers: headers
     })

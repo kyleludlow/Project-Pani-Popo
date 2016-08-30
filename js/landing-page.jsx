@@ -5,12 +5,14 @@ var Route = router.Route;
 var hashHistory = router.hashHistory;
 var Link = require('react-router').Link;
 var store = require('../redux/store.js');
-var actions = require('../redux/actions.js');
 var connect = require('react-redux').connect;
 
+var userActions = require('../redux/actions/user');
+var questionActions = require('../redux/actions/question');
+
 var LandingPage = React.createClass({
-  componentDidMount: function (){
-    this.props.dispatch(actions.getQuestion());
+  componentDidMount: function() {
+    this.props.dispatch(questionActions.getQuestion());
   },
   render: function() {
       return (

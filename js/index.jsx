@@ -14,20 +14,20 @@ var Link = require('react-router').Link;
 
 var SamoanKoans = React.createClass({
     render: function() {
-        return(
-        <div>
+        return (
             <div>
-                {this.props.children}
+                <div>
+                    {this.props.children}
+                </div>
+                <footer>
+                    <a href=".">Home</a>
+                    <a href=".">Login</a>
+                    <a href=".">Login with Google</a>
+                    <a href=".">Signup</a>
+                </footer>
             </div>
-            <footer>
-                <a href=".">Home</a>
-                <a href=".">Login</a>
-                <a href=".">Login with Google</a>
-                <a href=".">Signup</a>
-            </footer>
-        </div>
-    );
-  }
+        );
+    }
 });
 
 var mapStateToProps = function(state, props) {
